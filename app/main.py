@@ -1,7 +1,9 @@
 #!/usr/bin/env python
-import os
+import os, subprocess
 from pathlib import Path
 import ants
+import pandas as pd
+import numpy as np
 
 def get_template(gest_age):
     
@@ -59,8 +61,26 @@ def run(input_file, input_mask, gest_age, output_dir):
                                           interpolator = 'genericLabel')
                                           
     #Save the labels to the output-directory
-    warped_regional.to_file(os.path.join(output_dir, "fetal-regional-labels.nii.gz"))
-    warped_tissue.to_file(os.path.join(output_dir, "fetal-tissue-labels.nii.gz"))
+    region_labels_img = os.path.join(output_dir, "fetal-regional-labels.nii.gz")
+    tissue_labels_img = os.path.join(output_dir, "fetal-tissue-labels.nii.gz")
+                                     
+    warped_regional.to_file(region_labels_img)
+    warped_tissue.to_file(tissue_labels_img)
+
+    
+    seg_labels  = np.loadtxt(Path.joinpath(Path(__file__).parent.resolve(), 'templates/labelnames.csv'), dtype='str')
+    region_vols = float(subprocess.check_output(["fslstats -K " + region_labels_img + " " + region_labels_img + " -V | awk '{print $2}' "], shell=True).decode("utf-8"))
+    tissue_vols = float(subprocess.check_output(["fslstats -K " + tissue_labels_img + " " + tissue_labels_img + " -V | awk '{print $2}' "], shell=True).decode("utf-8"))
+
+    # Creates DataFrame.  
+    regional_df = pd.DataFrame(region_vols, columns=seg_labels)
+    tissue_df   = pd.DataFrame(tissue_vols, columns=seg_labels)
+
+    regional_csv = os.path.join(output_dir, "fetal-regional-labels.csv")
+    tissue_csv   = os.path.join(output_dir, "fetal-tissue-labels.csv")
+
+    regional_df.to_csv(regional_csv, index=False)
+    tissue_df.to_csv(tissue_csv, index=False)
 
 
 def fetalvbm(input_img, input_mask, gest_age):
