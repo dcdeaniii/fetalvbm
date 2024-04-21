@@ -65,7 +65,7 @@ def run(input_file, input_mask, gest_age, output_dir):
 
 def fetalvbm(input_img, input_mask, gest_age):
 
-    output_dir = "/flyweel/v0/output"
+    output_dir = "/flywheel/v0/output"
 
     run(input_file = input_img,
         input_mask = input_mask,
