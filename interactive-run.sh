@@ -1,8 +1,8 @@
 #!/usr/bin/env bash 
 
-GEAR=fw-2pieR
-IMAGE=flywheel/circumference:0.0.1
-LOG=circumference-0.0.1-660d46e40aa9007ce3580e7d
+GEAR=fw-fetalvbm
+IMAGE=flywheel/fetalvbm:0.0.1
+LOG=fetalvbm-0.0.1-6624e476e866d2e803e288c2
 
 # Command:
 docker run -it --rm --entrypoint bash\

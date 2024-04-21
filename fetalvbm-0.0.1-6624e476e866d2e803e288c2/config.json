@@ -1,0 +1,69 @@
+{
+    "config": {
+        "age": "33"
+    },
+    "inputs": {
+        "input": {
+            "hierarchy": {
+                "id": "64de9ea3d862f16fa7a6a370",
+                "type": "analysis"
+            },
+            "object": {
+                "type": "nifti",
+                "mimetype": "application/octet-stream",
+                "modality": null,
+                "classification": {},
+                "tags": [],
+                "info": {},
+                "size": 12601566,
+                "zip_member_count": null,
+                "version": 1,
+                "file_id": "64dea7572d4674a4dcc1afc6",
+                "origin": {
+                    "type": "job",
+                    "id": "64de9ea3d862f16fa7a6a377"
+                }
+            },
+            "location": {
+                "path": "/flywheel/v0/input/input/SVR-output-brain.nii.gz",
+                "name": "SVR-output-brain.nii.gz"
+            },
+            "base": "file"
+        },
+        "mask": {
+            "hierarchy": {
+                "id": "64e9195baa4b50c61aa6a004",
+                "type": "analysis"
+            },
+            "object": {
+                "type": "nifti",
+                "mimetype": "application/octet-stream",
+                "modality": null,
+                "classification": {},
+                "tags": [],
+                "info": {},
+                "size": 82978,
+                "zip_member_count": null,
+                "version": 1,
+                "file_id": "64e91e01aa4b50c61aa6a026",
+                "origin": {
+                    "type": "job",
+                    "id": "64e9195baa4b50c61aa6a006"
+                }
+            },
+            "location": {
+                "path": "/flywheel/v0/input/mask/reo-SVR-output-brain-mask-bet-1.nii.gz",
+                "name": "reo-SVR-output-brain-mask-bet-1.nii.gz"
+            },
+            "base": "file"
+        },
+        "api-key": {
+            "base": "api-key",
+            "key": ""
+        }
+    },
+    "destination": {
+        "id": "6624e476e866d2e803e288bf",
+        "type": "analysis"
+    }
+}
