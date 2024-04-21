@@ -2,8 +2,10 @@
 import os, subprocess
 from pathlib import Path
 import ants
+
 import numpy as np
 import pandas as pd
+
 
 def get_template(gest_age):
     
@@ -64,9 +66,11 @@ def run(input_file, input_mask, gest_age, output_dir):
     region_labels_img = os.path.join(output_dir, "fetal-regional-labels.nii.gz")
     tissue_labels_img = os.path.join(output_dir, "fetal-tissue-labels.nii.gz")
 
+
     warped_regional.to_file(region_labels_img)
     warped_tissue.to_file(tissue_labels_img)
 
+    
     seg_labels  = np.loadtxt(Path.joinpath(Path(__file__).parent.resolve(), 'templates/labelnames.csv'), dtype='str')
     region_vols = float(subprocess.check_output(["fslstats -K " + region_labels_img + " " + region_labels_img + " -V | awk '{print $2}' "], shell=True).decode("utf-8"))
     tissue_vols = float(subprocess.check_output(["fslstats -K " + tissue_labels_img + " " + tissue_labels_img + " -V | awk '{print $2}' "], shell=True).decode("utf-8"))
