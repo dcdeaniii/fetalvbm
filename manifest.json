@@ -54,7 +54,7 @@
     },
     "gear-builder": {
       "category": "analysis",
-      "image": "flywheel/fetalvbm:0.0.1"
+      "image": "flywheel/fetalvbm:0.0.4"
     },
     "kcl-app-binary": "app/main.py",
     "kcl-app-modalities": [
@@ -100,5 +100,5 @@
   "name": "fetalvbm",
   "source": "",
   "url": "",
-  "version": "0.0.1"
+  "version": "0.0.4"
 }

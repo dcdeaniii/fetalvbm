@@ -2,8 +2,10 @@
 import os, subprocess
 from pathlib import Path
 import ants
-import pandas as pd
+
 import numpy as np
+import pandas as pd
+
 
 def get_template(gest_age):
     
@@ -63,7 +65,8 @@ def run(input_file, input_mask, gest_age, output_dir):
     #Save the labels to the output-directory
     region_labels_img = os.path.join(output_dir, "fetal-regional-labels.nii.gz")
     tissue_labels_img = os.path.join(output_dir, "fetal-tissue-labels.nii.gz")
-                                     
+
+
     warped_regional.to_file(region_labels_img)
     warped_tissue.to_file(tissue_labels_img)
 
