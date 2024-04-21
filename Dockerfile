@@ -12,15 +12,15 @@ RUN apt-get update && apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN python3 -m pip install --upgrade pip && \
-    pip install flywheel-sdk && install flywheeel-gear-toolkit
+    pip install flywheel-sdk && pip install flywheel-gear-toolkit
+
+
+# Installing the current project (most likely to change, above layer can be cached)
+COPY ./ $FLYWHEEL/
 
 # Configure entrypoint
 RUN bash -c 'chmod +rx $FLYWHEEL/run.py' && \
-    bash -c 'chmod +rx $FLYWHEEL/start.sh' && \
     bash -c 'chmod +rx $FLYWHEEL/app/'
-
-# Installing the current project (most likely to change, above layer can be cached)
-COPY ./ $CODE/
 
 ENTRYPOINT ["bash","/flywheel/v0/run.py"] 
 
