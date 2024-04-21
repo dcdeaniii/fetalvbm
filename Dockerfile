@@ -1,5 +1,4 @@
 # Use the latest Python 3 docker image
-#FROM condaforge/mambaforge:latest as base
 FROM antsx/antspy:v0.5.2 as base
 
 ENV HOME=/root/
